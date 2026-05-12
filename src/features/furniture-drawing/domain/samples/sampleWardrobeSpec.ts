@@ -23,23 +23,29 @@ export const sampleWardrobeSpec: WardrobeSpec = {
       thickness: 18,
     },
   },
-  innerModules: [
+  innerCabinets: [
     {
-      id: 'module-left',
+      id: 'inner-cabinet-1',
       label: '속장 1',
       width: 760,
+      height: 2182,
+      depth: 560,
       shelfCount: 2,
     },
     {
-      id: 'module-center',
+      id: 'inner-cabinet-2',
       label: '속장 2',
       width: 760,
+      height: 2182,
+      depth: 560,
       shelfCount: 3,
     },
     {
-      id: 'module-right',
+      id: 'inner-cabinet-3',
       label: '속장 3',
       width: 760,
+      height: 2182,
+      depth: 560,
       shelfCount: 2,
     },
   ],

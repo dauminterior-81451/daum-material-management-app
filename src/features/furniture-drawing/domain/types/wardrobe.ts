@@ -1,6 +1,6 @@
-export type Millimeter = number;
+import type { Millimeter } from './drawing';
 
-export type ChannelPosition = 'top' | 'bottom' | 'left' | 'right' | 'back';
+export type WardrobeChannelPosition = 'top' | 'bottom' | 'left' | 'right' | 'back';
 
 export interface WardrobeSizeSpec {
   width: Millimeter;
@@ -16,20 +16,22 @@ export interface WardrobeThicknessSpec {
   backPanel: Millimeter;
 }
 
-export interface EndPanelSpec {
+export interface WardrobeEndPanelSideSpec {
   width: Millimeter;
   thickness: Millimeter;
 }
 
 export interface WardrobeEndPanelSpec {
-  left: EndPanelSpec;
-  right: EndPanelSpec;
+  left: WardrobeEndPanelSideSpec;
+  right: WardrobeEndPanelSideSpec;
 }
 
-export interface WardrobeInnerModuleSpec {
+export interface WardrobeInnerCabinetSpec {
   id: string;
   label: string;
   width: Millimeter;
+  height: Millimeter;
+  depth: Millimeter;
   shelfCount: number;
 }
 
@@ -39,7 +41,7 @@ export interface WardrobeToeKickSpec {
 
 export interface WardrobeChannelSpec {
   enabled: boolean;
-  position: ChannelPosition;
+  position: WardrobeChannelPosition;
   width: Millimeter;
   height: Millimeter;
   depth: Millimeter;
@@ -49,49 +51,7 @@ export interface WardrobeSpec {
   size: WardrobeSizeSpec;
   thickness: WardrobeThicknessSpec;
   endPanels: WardrobeEndPanelSpec;
-  innerModules: WardrobeInnerModuleSpec[];
+  innerCabinets: WardrobeInnerCabinetSpec[];
   toeKick: WardrobeToeKickSpec;
   channel: WardrobeChannelSpec;
-}
-
-export type WardrobePartKind =
-  | 'outline'
-  | 'leftEndPanel'
-  | 'rightEndPanel'
-  | 'leftSide'
-  | 'rightSide'
-  | 'topPanel'
-  | 'bottomPanel'
-  | 'innerDivider'
-  | 'shelf'
-  | 'backPanel'
-  | 'toeKick'
-  | 'channel';
-
-export interface DrawingRect {
-  id: string;
-  kind: WardrobePartKind;
-  label: string;
-  x: Millimeter;
-  y: Millimeter;
-  width: Millimeter;
-  height: Millimeter;
-}
-
-export interface DrawingDimension {
-  id: string;
-  label: string;
-  orientation: 'horizontal' | 'vertical';
-  x1: Millimeter;
-  y1: Millimeter;
-  x2: Millimeter;
-  y2: Millimeter;
-  offset: Millimeter;
-}
-
-export interface WardrobeDrawingModel {
-  size: WardrobeSizeSpec;
-  rects: DrawingRect[];
-  dimensions: DrawingDimension[];
-  notes: string[];
 }
